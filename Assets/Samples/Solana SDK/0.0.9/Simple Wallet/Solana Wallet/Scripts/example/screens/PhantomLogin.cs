@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Solana.Unity.Wallet;
 
 namespace Solana.Unity.SDK.Example
 {
@@ -11,22 +10,27 @@ namespace Solana.Unity.SDK.Example
         [SerializeField]
         private Button loginBtn;
 
-        private void OnEnable()
-        {
-            if (Web3.Base != null)
-            {
-                loginBtn.gameObject.SetActive(false);
-            }
-        }
-
         private void Start()
         {
             loginBtn.onClick.AddListener(LoginCheckerPhantom);
+            
+            //if platform android then remove all listeners and add sms login
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                loginBtn.onClick.RemoveAllListeners();
+                loginBtn.onClick.AddListener(LoginCheckerSms);
+            }
         }
         
         private async void LoginCheckerPhantom()
         {
             var account = await Web3.Instance.LoginPhantom();
+            Console.WriteLine(account);
+        }
+        
+        private async void LoginCheckerSms()
+        {
+            var account = await Web3.Instance.LoginSolanaMobileStack();
             Console.WriteLine(account);
         }
     }
