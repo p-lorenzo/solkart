@@ -51,4 +51,10 @@ public class TimeSlowingAbility : MonoBehaviour
         float targetTimeScale = isSlowing ? slowMotionScale : 1f;
         Time.timeScale = Mathf.Lerp(Time.timeScale, targetTimeScale, transitionTime * Time.unscaledDeltaTime);
     }
+    
+    public void RechargeTimeJuice()
+    {
+        Debug.Log("RechargeTimeJuice: " + remainingTimeJuice);
+        remainingTimeJuice = Mathf.Clamp(remainingTimeJuice + 0.3f, 0f, 1f);
+    }
 }
