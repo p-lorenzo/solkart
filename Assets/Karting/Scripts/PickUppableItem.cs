@@ -8,21 +8,18 @@ public class PickUppableItem : MonoBehaviour
     {
         if (collected) return;
 
-        if (other.CompareTag("Player"))
-        {
-            //check if the player has TimeSlowingAbility then if it has, call RechargeTimeJuice()
-            var timeSlowingAbility = other.GetComponentInParent<TimeSlowingAbility>();
-            if (timeSlowingAbility != null)
-            {
-                Debug.Log("RechargeTimeJuice");
-                timeSlowingAbility.RechargeTimeJuice();
-            }
-            
-            // Distruggi l'oggetto "coin"
-            Destroy(gameObject);
+        if (!other.CompareTag("Player")) return;
+        ItemPickup(other);
 
-            collected = true;
-        }
+        // Distruggi l'oggetto "coin"
+        Destroy(gameObject);
+
+        collected = true;
+    }
+
+    protected virtual void ItemPickup(Collider other)
+    {
+        // Implementa la logica di raccolta dell'oggetto
     }
 
     private void Update()
