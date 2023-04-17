@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62154fd5d02e4f7fbccf45a107d1c9c8, type: 3}
+  m_Name: LC_SouthToWest
+  m_EditorClassIdentifier: 
+  chunkSize: {x: 160, y: 160}
+  levelChunks:
+  - {fileID: 8367017249566629808, guid: b62efb3ebdd936541a2c1711236dcaa6, type: 3}
+  entryDirection: 2
+  exitDirection: 3

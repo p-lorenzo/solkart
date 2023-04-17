@@ -4,7 +4,7 @@ public class PickUppableItem : MonoBehaviour
 {
     private bool collected = false;
 
-    private async void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (collected) return;
 

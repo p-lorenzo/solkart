@@ -322,11 +322,12 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 1
   dirtTexture:
-    m_OverrideState: 0
-    m_Value: {fileID: 0}
+    m_OverrideState: 1
+    m_Value: {fileID: 28924146404686464, guid: 0e141b3397d234c8685509c5d77ebcf1, type: 2}
+    dimension: 1
   dirtIntensity:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &3124872943989936293
 MonoBehaviour:
   m_ObjectHideFlags: 3

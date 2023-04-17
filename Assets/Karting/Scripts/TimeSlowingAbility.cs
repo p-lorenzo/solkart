@@ -39,11 +39,11 @@ public class TimeSlowingAbility : MonoBehaviour
         {
             remainingTimeJuice -= Time.unscaledDeltaTime * timeJuiceDepletionRate;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && remainingTimeJuice > 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && remainingTimeJuice > 0)
         {
             isSlowing = true;
         }
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isSlowing = false;
         }
