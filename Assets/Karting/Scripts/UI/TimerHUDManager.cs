@@ -5,6 +5,7 @@ using TMPro;
 public class TimerHUDManager : MonoBehaviour
 {
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI elapsedTimeText;
     TimeManager m_TimeManager;
     
     private void Start()
@@ -23,8 +24,11 @@ public class TimerHUDManager : MonoBehaviour
     {
         if (m_TimeManager.IsFinite)
         {   
+            elapsedTimeText.gameObject.SetActive(true);
             timerText.gameObject.SetActive(true);
+            int elapsedTime = (int) Math.Ceiling(m_TimeManager.TotalElapsedTime);
             int timeRemaining = (int) Math.Ceiling(m_TimeManager.TimeRemaining);
+            elapsedTimeText.text = string.Format("{0}:{1:00}", elapsedTime / 60, elapsedTime % 60);
             timerText.text = string.Format("{0}:{1:00}", timeRemaining / 60, timeRemaining % 60);
         }
         else

@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using KartGame;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class FeedbackFlashHUD : MonoBehaviour
+public class EndingFlashHUD : MonoBehaviour
 {
     [Header("References")]
   
@@ -21,7 +22,7 @@ public class FeedbackFlashHUD : MonoBehaviour
     bool m_FlashActive;
 
     private TimeManager m_timeManager;
-    GameFlowManager m_GameFlowManager;
+    GameLoopManager m_GameLoopManager;
     AudioSource m_audioSource;
     bool warningSoundPlayed = false;
 
@@ -30,14 +31,14 @@ public class FeedbackFlashHUD : MonoBehaviour
     {
         // Subscribe to player damage events
         
-        m_GameFlowManager = FindObjectOfType<GameFlowManager>();
-        DebugUtility.HandleErrorIfNullFindObject<GameFlowManager, FeedbackFlashHUD>(m_GameFlowManager, this);
+        m_GameLoopManager = FindObjectOfType<GameLoopManager>();
+        DebugUtility.HandleErrorIfNullFindObject<GameLoopManager, EndingFlashHUD>(m_GameLoopManager, this);
 
         m_timeManager = FindObjectOfType<TimeManager>();
-        DebugUtility.HandleErrorIfNullFindObject<TimeManager, FeedbackFlashHUD>(m_timeManager, this);
+        DebugUtility.HandleErrorIfNullFindObject<TimeManager, EndingFlashHUD>(m_timeManager, this);
 
         m_audioSource = GetComponent<AudioSource>();
-        DebugUtility.HandleErrorIfNullFindObject<AudioSource, FeedbackFlashHUD>(m_audioSource, this);
+        DebugUtility.HandleErrorIfNullFindObject<AudioSource, EndingFlashHUD>(m_audioSource, this);
     }
 
     private void Update()
@@ -50,10 +51,8 @@ public class FeedbackFlashHUD : MonoBehaviour
             EnableFlash(true);
             float vignetteAlpha = criticalTimeVignetteMaxAlpha;
 
-            if (m_GameFlowManager.gameState == GameState.Lost)
+            if (m_GameLoopManager.gameState == GameState.End)
                 vignetteCanvasGroup.alpha = vignetteAlpha;
-            if (m_GameFlowManager.gameState == GameState.Won)
-                vignetteCanvasGroup.alpha = 0;
             else
             {
                 vignetteCanvasGroup.alpha = ((Mathf.Sin(Time.time * pulsatingVignetteFrequency) / 2) + 0.5f) * vignetteAlpha;
